@@ -14,14 +14,14 @@ export default class App extends Component {
     user: getTokenFromLocalStorage()
   }
 
-  handelTokenChange = (user) => {
+  handleTokenChange = (user) => {
     this.setState({ user })
 
     putTokenInLocalStorage(user);
   }
 
   handleSignOut = () => {
-    this.handelTokenChange();
+    this.handleTokenChange({});
   }
 
   render() {
@@ -43,7 +43,7 @@ export default class App extends Component {
               exact
               render={(routerProps) => 
                 <Login 
-                  handelTokenChange={this.handelTokenChange}
+                  handleTokenChange={this.handleTokenChange}
                   {...routerProps} />}
             />
             <Route
@@ -51,7 +51,7 @@ export default class App extends Component {
               exact
               render={(routerProps) => 
                 <Signup 
-                  handelTokenChange={this.handelTokenChange}
+                  handleTokenChange={this.handleTokenChange}
                   {...routerProps} />}
             />
             <PrivateRoute
