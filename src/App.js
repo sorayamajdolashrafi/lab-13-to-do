@@ -5,15 +5,33 @@ import Home from './home/Home.js';
 import Login from './auth/Login.js';
 import Signup from './auth/Signup.js';
 import Todo from './todo/Todo.js';
-// import PrivateRoute from './components/PrivateRoute.js';
-import { Route, Router, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute.js';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { putTokenInLocalStorage, getTokenFromLocalStorage } from './utils.js';
 
 export default class App extends Component {
+  state = {
+    user: getTokenFromLocalStorage()
+  }
+
+  handelTokenChange = (user) => {
+    this.setState({ user })
+
+    putTokenInLocalStorage(user);
+  }
+
+  handleSignOut = () => {
+    this.handelTokenChange();
+  }
+
   render() {
+    const { user } = this.state;
     return (
       <div>
         <Router>
-          <Header />
+          <Header 
+            user={this.state.user}
+            handleSignOut={this.handleSignOut}/>
           <Switch>
             <Route
               path="/"
@@ -23,22 +41,30 @@ export default class App extends Component {
             <Route
               path="/login"
               exact
-              render={(routerProps) => <Login {...routerProps} />}
+              render={(routerProps) => 
+                <Login 
+                  handelTokenChange={this.handelTokenChange}
+                  {...routerProps} />}
             />
-                        <Route
+            <Route
               path="/signup"
               exact
-              render={(routerProps) => <Signup {...routerProps} />}
+              render={(routerProps) => 
+                <Signup 
+                  handelTokenChange={this.handelTokenChange}
+                  {...routerProps} />}
             />
-                        <Route
+            <PrivateRoute
               path="/list"
               exact
-              render={(routerProps) => <Todo {...routerProps} />}
+              token={user && user.token}
+              render={(routerProps) => 
+                <Todo 
+                  user={this.state.user}
+                  {...routerProps} />}
             />
           </Switch>
         </Router>
-
-        
       </div>
     )
   }
