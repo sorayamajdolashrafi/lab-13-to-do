@@ -1,12 +1,12 @@
  import request from 'superagent';
  
- const URL = 'https://lab-12-to-do.herokuapp.com';
+ const URL = 'http://localhost:3000';
 
  export async function signUp(email, password) {
 
     const response = await request
         .post(`${URL}/auth/signup`)
-        .send({email, password})
+        .send({ email, password })
     
     return response.body;
  }
@@ -15,19 +15,19 @@
 
     const response = await request
         .post(`${URL}/auth/signin`)
-        .send({email, password})
+        .send({ email, password })
     
     return response.body;
  }
 
- export async function createTodo(todo, token) {
+ export async function createTodo(hacer, color, token) {
 
     const response = await request
         .post(`${URL}/api/todos`)
         .set('Authorization', token)
-        .send({ todo })
+        .send({ hacer, color })
     
-    return response.body
+    return response.body;
  }
 
  export async function updateTodo(todo, token) {
@@ -37,7 +37,7 @@
         .set('Authorization', token)
         .send({ todo })
 
-    return response.body
+    return response.body;
  }
 
  export async function getTodos(token) {
@@ -46,5 +46,5 @@
         .get(`${URL}/api/todos`)
         .set('Authorization', token)
 
-    return response.body
+    return response.body;
  }

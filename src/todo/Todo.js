@@ -7,7 +7,6 @@ export default class Todo extends Component {
         list: [],
         hacer: '',
         color: '',
-        completed: false
     }
 
     componentDidMount = async () => {
@@ -17,22 +16,22 @@ export default class Todo extends Component {
     fetchList = async () => {
         const list = await getTodos(this.props.user.token);
 
-        this.setState({ list });
+        this.setState({ list: list });
     }
 
     handleHacerChange = (e) => this.setState({ hacer: e.target.value })
 
     handleColorChange = (e) => this.setState({ color: e.target.value })
 
-    handleSubmit = async e => {
+    handleSubmit = async (e) => {
         e.preventDefault();
 
-        const todo = { hacer: this.state.hacer, color: this.state.color, completed: this.state.completed }
-
-        await createTodo(todo, this.props.user.token);
+        // const todo = { hacer: this.state.hacer, color: this.state.color, completed: this.state.completed, user_id: this.props.user.id }
+        
+        await createTodo(this.state.hacer, this.state.color, this.props.user.token);
         await this.fetchList();
 
-        // this.setState(todo)
+        this.setState({ hacer: '', color: '' })
         console.log('state:', this.state)
     }
 
@@ -66,8 +65,8 @@ export default class Todo extends Component {
 
                 {this.state.list.map(todo =>
                     <p
-                        key={`${todo.color}-${todo.id}`}
-                        className={`${todo.color}`}
+                        key={`${todo.id}`}
+                        // className={`${todo.color}`}
                     >
                         {todo.hacer}
                     </p>
