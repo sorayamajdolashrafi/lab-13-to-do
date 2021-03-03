@@ -23,27 +23,29 @@ export default class Signup extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="signupMain">
+                <form 
+                    className="signupForm"
+                    onSubmit={this.handleSubmit}>
                     <h2>sign up:</h2>
                     
-                    <label>
+                    <label className="signupLabel">
                         <input 
                             value={this.state.email}
                             onChange={this.handleEmailChange}
-                            placeholder="hey@you.com"/>
+                            placeholder="yikes@yikes.com"/>
                         <h3>email</h3>
                     </label>
                     
-                    <label>
+                    <label className="signupLabel">
                         <input 
                             value={this.state.password}
                             onChange={this.handlePasswordChange}
-                            placeholder="p*ssw0rd"/>
+                            placeholder="1234"/>
                         <h3>password</h3>
                     </label>
 
-                    <button>get started!</button>
+                    <button className="signupButton">get started!</button>
                 </form>
                 
             </div>

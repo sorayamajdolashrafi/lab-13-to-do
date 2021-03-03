@@ -1,0 +1,171 @@
+.listMain {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.listForm {
+    width: 50vw;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;    
+    border: rgb(233, 233, 233) 2px solid;
+    border-radius: 3px;
+    box-shadow: rgb(233, 233, 233) -5px 5px;
+    padding: 0px 20px;
+    margin: 15px;
+}
+
+.listForm input {
+    width: auto;
+    min-width: 45%;
+    height: 30px;
+    border: rgb(78, 78, 78) 2px solid;
+    border-radius: 3px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+.listForm:hover input {
+    box-shadow: rgb(233, 233, 233) -5px 5px;
+}
+
+select {
+    margin: 10px;
+    width: auto;
+    height: 30px;
+    border: rgb(78, 78, 78) 2px solid;
+    border-radius: 3px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+select:hover {
+    box-shadow: rgb(233, 233, 233) -5px 5px;
+}
+
+.listWrapper {
+    width: 50vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    border:rgb(233, 233, 233) 2px solid;
+    border-radius: 3px;
+    box-shadow: rgb(233, 233, 233) -5px 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.listWrapper label {
+    width: 90%;
+    height: auto;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    text-align: left;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+label:hover {
+    box-shadow: rgb(233, 233, 233) -5px 5px;
+}
+
+.listWrapper p {
+    margin: 10px;
+}
+
+.todo_ {
+    border: rgb(233, 233, 233) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_green {
+    border: rgb(88, 252, 170) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_yellow {
+    border: rgb(255, 255, 28) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_orange {
+    border: rgb(252, 154, 88) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_pink {
+    border: rgb(255, 112, 160) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_purple {
+    border: rgb(204, 53, 255) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_blue {
+    border: rgb(88, 211, 252) 2px solid;
+    border-radius: 3px;
+}
+
+.todo_completed_ {
+    border: rgb(233, 233, 233) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+
+}
+
+.todo_completed_green {
+    border: rgb(88, 252, 170) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+}
+
+.todo_completed_yellow {
+    border: rgb(255, 255, 28) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+}
+
+.todo_completed_orange {
+    border: rgb(252, 154, 88) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+}
+
+.todo_completed_pink {
+    border: rgb(255, 112, 160) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+}
+
+.todo_completed_purple {
+    border: rgb(204, 53, 255) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+}
+
+.todo_completed_blue {
+    border: rgb(88, 211, 252) 2px solid;
+    border-radius: 3px;
+    text-decoration: line-through;
+    filter: opacity(55%);
+}
+

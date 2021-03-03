@@ -1,6 +1,6 @@
  import request from 'superagent';
  
- const URL = 'http://localhost:3000';
+ const URL = 'https://lab-12-to-do.herokuapp.com';
 
  export async function signUp(email, password) {
 
@@ -30,12 +30,11 @@
     return response.body;
  }
 
- export async function updateTodo(todo, token) {
+ export async function completeTodo(todoId, token) {
 
     const response = await request
-        .put(`${URL}/api/todos/${todo.id}`)
+        .put(`${URL}/api/todos/${todoId}`)
         .set('Authorization', token)
-        .send({ todo })
 
     return response.body;
  }

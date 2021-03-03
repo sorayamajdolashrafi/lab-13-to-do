@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { createTodo, getTodos } from '../api-utils';
+import { completeTodo, createTodo, getTodos } from '../api-utils';
 import './Todo.css';
+
 
 export default class Todo extends Component {
     state = {
@@ -25,8 +26,6 @@ export default class Todo extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-
-        // const todo = { hacer: this.state.hacer, color: this.state.color, completed: this.state.completed, user_id: this.props.user.id }
         
         await createTodo(this.state.hacer, this.state.color, this.props.user.token);
         await this.fetchList();
@@ -35,23 +34,32 @@ export default class Todo extends Component {
         console.log('state:', this.state)
     }
 
+    handleComplete = async(todoId) => {
+
+        await completeTodo(todoId, this.props.user.token);
+
+        this.fetchList();
+    }
+
     render() {
         return (
-            <div>
+            <div className="listMain">
                 <h2>to do:</h2>
+
                 <form
+                    className="listForm"
                     onSubmit={this.handleSubmit}>
-                    <label>
-                        <input
-                            placeholder="new task"
-                            value={this.state.hacer}
-                            onChange={this.handleHacerChange} />
-                    </label>
+
+                    <input
+                        placeholder="new task"
+                        value={this.state.hacer}
+                        onChange={this.handleHacerChange} />
+
                     
-                    <h3>color label:</h3>
                     <select
-                        value={this.state.color}
+                        value={this.state.color}                       
                         onChange={this.handleColorChange}>
+                            <option value="">label by color</option>
                             <option value="green">green</option>
                             <option value="yellow">yellow</option>
                             <option value="orange">orange</option>
@@ -60,17 +68,21 @@ export default class Todo extends Component {
                             <option value="blue">blue</option>
                     </select>
 
-                    <button>make it!</button>
+                    <button>add to list</button>
                 </form>
 
-                {this.state.list.map(todo =>
-                    <p
-                        key={`${todo.id}`}
-                        // className={`${todo.color}`}
-                    >
-                        {todo.hacer}
-                    </p>
-                )}
+                <div className="listWrapper">
+                    {this.state.list.map(todo =>
+                        <label
+                            key={`${todo.id}`}
+                            onClick={() => this.handleComplete(todo.id)}
+                            className={`todo_${todo.completed ? 'completed_' : ''}${todo.color}`}
+                        >
+                            <p>{todo.hacer}</p>
+
+                        </label>
+                    )}
+                </div>
             </div>
         )
     }

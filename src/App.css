@@ -1,3 +1,35 @@
 .App {
   text-align: center;
 }
+
+h2 {
+  font-family: 'Faster One', cursive;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: rgb(78, 78, 78);
+}
+
+button {
+  width: fit-content;
+  height: 30px;
+  border: rgb(78, 78, 78) 2px solid;
+  border-radius: 3px;
+  font-family: 'Lato', sans-serif;
+  font-size: .9rem;
+  text-align: center;
+  background: rgb(255, 255, 253);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  box-shadow: rgb(233, 233, 233) -5px 5px;
+}
+
+input {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}

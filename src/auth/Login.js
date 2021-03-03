@@ -23,27 +23,29 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="loginMain">
+                <form 
+                    className="loginForm"
+                    onSubmit={this.handleSubmit}>
                     <h2>login:</h2>
                     
-                    <label>
+                    <label className="loginLabel">
                         <input 
                             value={this.state.email}
                             onChange={this.handleEmailChange}
-                            placeholder="hey@you.com"/>
+                            placeholder="ohno@yikes.com"/>
                         <h3>email</h3>
                     </label>
                     
-                    <label>
+                    <label className="loginLabel">
                         <input 
                             value={this.state.password}
                             onChange={this.handlePasswordChange}
-                            placeholder="p*ssw0rd"/>
+                            placeholder="1234"/>
                         <h3>password</h3>
                     </label>
 
-                    <button>get started!</button>
+                    <button className="loginButton">it's list time!</button>
                 </form>
                 
             </div>
